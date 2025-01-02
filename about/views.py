@@ -1,17 +1,17 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from .models import About
 
 
 # Create your views here.
-def about(request):
+def about_me(request):
+    """
+    Renders the About page
+    """
 
-    queryset = About.objects.all().order_by("-updated_on")
-    about = queryset.first()
+    about = About.objects.all().order_by("-updated_on").first()
 
     return render(
         request,
         "about/about.html",
-        {
-            "about": about,
-        },
+        {"about": about},
     )
