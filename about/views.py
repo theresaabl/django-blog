@@ -6,7 +6,7 @@ from .models import About
 def about(request):
 
     queryset = About.objects.all().order_by("-updated_on")
-    about = get_object_or_404(queryset.first())
+    about = queryset.first()
 
     return render(
         request,
