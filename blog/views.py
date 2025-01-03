@@ -4,7 +4,6 @@ from django.contrib import messages
 from .models import Post
 from .forms import CommentForm
 
-
 # Create your views here.
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by("-created_on")
@@ -34,10 +33,10 @@ def post_detail(request, slug):
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.author = request.user
+            comment = comment_form.save(commit=False)  # returns object not yet saved to db
+            comment.author = request.user  # populate other model fields
             comment.post = post
-            comment.save()
+            comment.save()  # save to database
             messages.add_message(
                 request, messages.SUCCESS,
                 'Comment submitted and awaiting approval'
