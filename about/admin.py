@@ -16,5 +16,5 @@ class AboutAdmin(SummernoteModelAdmin):
 #       we do below.
 @admin.register(CollaborateRequest)
 class CollaborateRequestAdmin(admin.ModelAdmin):
-
     list_display = ('message', 'read',)
+    list_filter = ("read",)

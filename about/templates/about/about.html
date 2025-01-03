@@ -31,7 +31,7 @@
                 I'm excited to hear from you. Fill out the form
                 and we can get the ball rolling!
             </p>
-            <form id="collaborateForm" method="post" style="margin-top: 1.3em;">
+            <form method="post">
                 {{ collaborate_form | crispy }}
                 {% csrf_token %}
                 <button id="submitButton" type="submit" class="btn btn-secondary">Submit</button>

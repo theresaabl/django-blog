@@ -4,6 +4,7 @@ from django.contrib import messages
 from .models import Post
 from .forms import CommentForm
 
+
 # Create your views here.
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by("-created_on")
