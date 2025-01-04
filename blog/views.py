@@ -35,7 +35,8 @@ def post_detail(request, slug):
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
-            comment = comment_form.save(commit=False)  # returns object not yet saved to db
+            # returns object not yet saved to db
+            comment = comment_form.save(commit=False)
             comment.author = request.user  # populate other model fields
             comment.post = post
             comment.save()  # save to database
